@@ -1,5 +1,6 @@
 _lvl_pc/
 out/
+geckodriver.log
 
 # From https://github.com/jupyter/notebook/blob/main/.gitignore
 

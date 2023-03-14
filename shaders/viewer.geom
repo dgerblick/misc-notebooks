@@ -15,7 +15,7 @@ out Geom2Frag {
     vec3 pos;
     vec3 norm;
     vec2 uv;
-    vec3 edgeDist;
+    noperspective vec3 edgeDist;
 }
 outData;
 
