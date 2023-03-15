@@ -19,12 +19,15 @@ class KPTeam:
     '''Class containing KenPom data for a specfic team'''
     name: str
     conf: str
+    adjEM: float
     adjO: float
     adjO_rk: int
     adjD: float
     adjD_rk: int
     adjT: float
     adjT_rk: int
+    oppEM: float
+    oppEM_rk: int
     oppO: float
     oppO_rk: int
     oppD: float
@@ -60,14 +63,16 @@ class KPTeam:
                 continue
             name = cols[1].find('a').get_text()
             conf = cols[2].get_text()
+            adjEM = float(cols[4].get_text())
             adjO, adjD, adjT = (float(x.get_text()) for x in cols[5:10:2])
             adjO_rk, adjD_rk, adjT_rk = (int(x.get_text())
                                          for x in cols[6:11:2])
-            oppO, oppD, ncEM = (float(x.get_text()) for x in cols[15:20:2])
-            oppO_rk, oppD_rk, ncEM_rk = (int(x.get_text())
-                                         for x in cols[16:21:2])
-            teams.append(KPTeam(name, conf, adjO, adjO_rk, adjD, adjD_rk,
-                         adjT, adjT_rk, oppO, oppO_rk, oppD, oppD_rk, ncEM, ncEM_rk))
+            oppEM, oppO, oppD, ncEM = (float(x.get_text())
+                                       for x in cols[13:20:2])
+            oppEM_rk, oppO_rk, oppD_rk, ncEM_rk = (int(x.get_text())
+                                                   for x in cols[14:21:2])
+            teams.append(KPTeam(name, conf, adjEM, adjO, adjO_rk, adjD, adjD_rk,
+                         adjT, adjT_rk, oppEM, oppEM_rk, oppO, oppO_rk, oppD, oppD_rk, ncEM, ncEM_rk))
 
         return teams
 
